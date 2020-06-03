@@ -84,5 +84,4 @@ const handleName = (user) => {
     option.appendChild(name);
     document.querySelector('select').appendChild(option);
     document.querySelector('#name').innerHTML = user.name;
->>>>>>> 9cbe75340bc56bd7714b26cc3aaea070b20333c7
 }
