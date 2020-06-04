@@ -1,4 +1,4 @@
-const url = 'http://jsonplaceholder.typicode.com/users';
+const url = 'https://jsonplaceholder.typicode.com/users';
 const users = document.querySelector('#users');
 const person = document.querySelector('#name');
 const email = document.querySelector('#email');
