@@ -1,4 +1,4 @@
-const url = 'https://jsonplaceholder.typicode.com/users';
+const userJSONurl = 'https://jsonplaceholder.typicode.com/users';
 const users = document.querySelector('#users');
 const person = document.querySelector('#name');
 const email = document.querySelector('#email');
@@ -7,7 +7,7 @@ const contact = document.querySelector('#contact');
 const image = document.querySelector(".img-thumbnail")
 
 let usersData = [];
-fetch(url)
+fetch(userJSONurl)
 .then((resp) => resp.json())
 .then(function(data){
     usersData = data;
