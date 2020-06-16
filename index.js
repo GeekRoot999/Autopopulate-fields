@@ -28,7 +28,6 @@ function handleView(value){
     address.value = userDetail.location.street.number+ " "+userDetail.location.street.name+ " "+userDetail.location.city+" "+userDetail.location.state+" "+userDetail.location.country+" "+userDetail.location.postcode+ " ";
     contact.value = userDetail.phone;
     image.id = userDetail.id.value;
-    console.log(image.id);
     image.src = `https://robohash.org/test${image.id}?size=100x100`
 }
 
