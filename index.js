@@ -13,11 +13,9 @@ fetch(userJSONurl)
     usersData = data.results;
     usersData.forEach((user) => {
     handleName(user);
-    console.log(user);
     });
 })
 .catch(function(error) {
-    console.log(error)
     console.log(JSON.stringify(error));
 })
 
@@ -30,6 +28,7 @@ function handleView(value){
     address.value = userDetail.location.street.number+ " "+userDetail.location.street.name+ " "+userDetail.location.city+" "+userDetail.location.state+" "+userDetail.location.country+" "+userDetail.location.postcode+ " ";
     contact.value = userDetail.phone;
     image.src = `https://robohash.org/test${userDetail.nat}?size=100x100`
+    console.log(userDetail.nat);
 }
 
 
