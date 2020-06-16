@@ -1,4 +1,4 @@
-const userJSONurl = 'https://jsonplaceholder.typicode.com/users';
+const userJSONurl = 'https://randomuser.me/api/?results=10';
 const users = document.querySelector('#users');
 const person = document.querySelector('#name');
 const email = document.querySelector('#email');
@@ -7,26 +7,27 @@ const contact = document.querySelector('#contact');
 const image = document.querySelector(".img-thumbnail")
 
 let usersData = [];
-fetch(userJSONurl, {mode:'no-cors'})
+fetch(userJSONurl)     
 .then((resp) => resp.json())
 .then(function(data){
-    usersData = data;
+    usersData = data.results;
     usersData.forEach((user) => {
     handleName(user);
+    console.log(user);
     });
 })
 .catch(function(error) {
+    console.log(error)
     console.log(JSON.stringify(error));
 })
 
 
 function handleView(value){
     var result = value.value;
-    const userDetail = usersData.find(info => info.name == result);
-    console.log(userDetail);
-    person.value = userDetail.name;
+    const userDetail = usersData.find(info => info.name.first+" " +info.name.last == result);
+    person.value = userDetail.name.first+" "+userDetail.name.last;
     email.value = userDetail.email;
-    address.value = userDetail.address.street+ " "+userDetail.address.suite+" "+userDetail.address.city+" "+userDetail.address.zipcode;
+    address.value = userDetail.location.street.number+ " "+userDetail.location.street.name+ " "+userDetail.location.city+" "+userDetail.location.state+" "+userDetail.location.country+" "+userDetail.location.postcode+ " ";
     contact.value = userDetail.phone;
     image.src = `https://robohash.org/test${userDetail.id}?size=100x100`
 }
@@ -34,10 +35,10 @@ function handleView(value){
 
 const handleName = (user) => {
     const option = document.createElement("option");
-    const name = document.createTextNode(user.name);
-    option.id = user.id;
-    option.value = user.name; 
+    const name = document.createTextNode(user.name.first+" "+user.name.last);
+    option.id = user.nat;
+    option.value = user.name.first+" "+user.name.last; 
     option.appendChild(name);
     document.querySelector('select').appendChild(option);
-    document.querySelector('#name').innerHTML = user.name;
+    document.querySelector('#name').innerHTML = user.name.first+" "+user.name.last;
 }
